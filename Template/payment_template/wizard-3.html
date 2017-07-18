@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Business Directory Template Loocall</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Business Directory Template Loocall ">
+    <meta name="keywords" content="">
+    <meta name="author" content="Codenpixel">
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="">
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- ICONS -->
+    <link rel="stylesheet" href="css/icons/fontawesome/css/style.css">
+    <!-- THEME / PLUGIN CSS -->
+    <link rel="stylesheet" href="css/animsition.min.css">
+    <link rel="stylesheet" href="js/vendors/slick/slick.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+</head>
+
+<body class="animsition">
+    <div class="wrapper">
+        <!-- HEADER -->
+        <header>
+            <nav class="navbar-default navbar-fixed-top">
+                <div class="container">
+                    <a href="#" class="nav-trigger hidden-xs" data-toggle="modal" data-target="#myModal"></a>
+                    <div class="navbar-header"> <a href="./index.html" class="navbar-brand">L<span>oo</span>call</a> </div>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li> <a href="index.html">Home</a> </li>
+                            <li class=" dropdown"> <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="directory_profile.html">Profile (Booking)</a> </li>
+                                    <li><a href="directory_profile_2.html">Profile (Discount Sale)</a> </li>
+                                    <li><a href="directory_coupons.html">Profile (Coupons)</a> </li>
+                                    <li><a href="directory_search_list.html">Search results list</a> </li>
+                                    <li><a href="directory_search.html">Search results grid</a> </li>
+                                    <li><a href="faq.html">Faq Page</a> </li>
+                                    <li><a href="wizard.html">Form Wizard</a> </li>
+                                </ul>
+                            </li>
+                            <li> <a href="directory_pricing.html">Pricing</a> </li>
+                            <li class=" dropdown"> <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">News <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="directory_blog.html">Blog</a> </li>
+                                    <li><a href="directory_blog_single.html">Blog single</a> </li>
+                                </ul>
+                            </li>
+                            <li> <a href="directory_contact.html">Contact</a> </li>
+                        </ul>
+                    </div>
+                    <div class="header-widget pull-right"> <a href="#" class="h-cart dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Cart <span class="item-count">0</span></a>
+                        <ul class="dropdown-menu dropdown-menu-lg">
+                            <li class="notifi-title">My Coupons</li>
+                            <li class="list-group">
+                                <!-- list item-->
+                                <a href="javascript:void(0);" class="list-group-item">
+                                    <div class="media">
+                                        <div class="media-left"> <img src="http://placehold.it/120x80" alt=""> </div>
+                                        <div class="media-body clearfix">
+                                            <div class="media-heading">Up to 30%</div>
+                                            <p class="m-0"> <small>Shopname coupon</small> </p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- list item-->
+                                <a href="javascript:void(0);" class="list-group-item">
+                                    <div class="media">
+                                        <div class="media-left"> <img src="http://placehold.it/120x80" alt=""> </div>
+                                        <div class="media-body clearfix">
+                                            <div class="media-heading">Up to 30%</div>
+                                            <p class="m-0"> <small>Shopname coupon</small> </p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- list item-->
+                                <a href="javascript:void(0);" class="list-group-item">
+                                    <div class="media">
+                                        <div class="media-left"> <img src="http://placehold.it/120x80" alt=""> </div>
+                                        <div class="media-body clearfix">
+                                            <div class="media-heading">Up to 30%</div>
+                                            <p class="m-0"> <small>Shopname coupon</small> </p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- last list item -->
+                                <a href="javascript:void(0);" class="list-group-item"> <small>Print all coupons</small> </a>
+                            </li>
+                        </ul> <a href="#" class="h-login" data-toggle="modal" data-target="#myModal2" data-tab="login">Sign In</a> </div>
+                </div>
+            </nav>
+        </header>
+        <div class="home-directory">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="innerWrapper clearfix stepsPage">
+                            <div class="row progress-wizard" style="border-bottom:0;">
+                                <div class="col-xs-3 progress-wizard-step complete">
+                                    <div class="text-center progress-wizard-stepnum">Billing &amp; Shipping Address</div>
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a href="wizard.html" class="progress-wizard-dot"></a>
+                                </div>
+                                <div class="col-xs-3 progress-wizard-step complete">
+                                    <div class="text-center progress-wizard-stepnum">Shipping Method</div>
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a href="wizard-2.html" class="progress-wizard-dot"></a>
+                                </div>
+                                <div class="col-xs-3 progress-wizard-step ">
+                                    <div class="text-center progress-wizard-stepnum">Payment Method</div>
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a href="wizard-3.html" class="progress-wizard-dot"></a>
+                                </div>
+                                <div class="col-xs-3 progress-wizard-step disabled">
+                                    <div class="text-center progress-wizard-stepnum">Review</div>
+                                    <div class="progress">
+                                        <div class="progress-bar"></div>
+                                    </div>
+                                    <a href="wizard-4.html" class="progress-wizard-dot"></a>
+                                </div>
+                            </div>
+                            <form class="row" method="POST">
+                                <div class="col-xs-12">
+                                    <div class="page-header">
+                                        <h4>Payment Information</h4> </div>
+                                </div>
+                                <div class="form-group col-sm-4 col-xs-12">
+                                    <label>Payment By</label>
+                                    <select class="categorie">
+                                        <option>Card</option>
+                                        <option>Paypal</option>
+                                        <option>On delivery</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-4 col-xs-12">
+                                    <label>Card type</label>
+                                    <select class="categorie">
+                                        <option>Maestro</option>
+                                        <option>Visa</option>
+                                        <option>American</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-4 col-xs-12">
+                                    <label>Card Number</label>
+                                    <input type="password" class="form-control"> </div>
+                                <div class="form-group col-sm-4 col-xs-12">
+                                    <label>Expiration Date</label>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <input type="text" class="form-control"> </div>
+                                        <div class="col-xs-6">
+                                            <input type="text" class="form-control"> </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 col-xs-12">
+                                    <label>CV Code</label>
+                                    <input type="text" class="form-control"> </div>
+                                <div class="col-xs-12">
+                                    <div class="well well-lg clearfix">
+                                        <ul class="pagers">
+                                            <li class="previous pull-left"><a href="wizard-2.html" class="hideContent btn btn-danger">back</a></li>
+                                            <li class="next pull-right"><a href="wizard-4.html" class="btn btn-default">Continue</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cta-wrap">
+            <div class="container">
+                <div class="row center-content">
+                    <div class="col-md-8 col-sm-7">
+                        <p>Get Loocal PSD template on themeforest</p>
+                    </div>
+                    <div class="col-md-4 col-sm-5 text-right"> <a href="#" class="cta-btn">Buy for $12 only</a> </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 footer-widget">
+                        <h5>About Us</h5>
+                        <p> <a href="#">Questions? 080-123-4564</a>
+                            <br> <a href="#">Our History</a>
+                            <br> <a href="#">Entrepreneurship</a>
+                            <br> <a href="#">Finance</a>
+                            <br> <a href="#">Human Resources</a>
+                            <br> <a href="#">Marketing</a>
+                            <br> <a href="#">Sales</a> </p>
+                    </div>
+                    <div class="col-md-3 col-sm-3 footer-widget">
+                        <h5>How it works</h5>
+                        <p> <a href="#">What we do</a>
+                            <br> <a href="#">Who we are</a>
+                            <br> <a href="#">Join the team</a>
+                            <br> <a href="#">Press</a>
+                            <br> <a href="#">Contact Us</a>
+                            <br> <a href="#">Contribute Content</a> </p>
+                    </div>
+                    <div class="col-md-3 col-sm-3 footer-widget">
+                        <h5>Advertise</h5>
+                        <p> <a href="#">Advertise With Us</a>
+                            <br> <a href="#">Account Login</a>
+                            <br> <a href="#">Case Studies</a>
+                            <br> <a href="#">Partner With Us</a> </p>
+                    </div>
+                    <div class="col-md-3 col-sm-3 footer-widget last">
+                        <ul class="payment-methods">
+                            <li> <img src="images/other/1/1.png" class="img-responsive" alt="" /> </li>
+                            <li> <img src="images/other/1/2.png" class="img-responsive" alt="" /> </li>
+                            <li> <img src="images/other/1/3.png" class="img-responsive" alt="" /> </li>
+                        </ul>
+                        <p>Stay in the loop on all upcoming promotions,discounts and latest updates</p>
+                        <form class="f-newsletter">
+                            <input type="email" placeholder="E-mail address"> </form>
+                        <p class="copy">&copy; 2016 Loocal. All rights reserved 2015.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-social">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-2"> <a href="#"><span class="hidden-xs hidden-sm ">Contact</span><span class="visible-xs visible-sm hidden-md hidden-lg"><i class="fa fa-envelope-o"></i></span></a> </div>
+                        <div class="col-md-2 col-sm-2 col-xs-2"> <a href="#"><span class="hidden-xs hidden-sm ">Facebook</span><span class="visible-xs visible-sm hidden-md hidden-lg"><i class="fa fa-facebook"></i></span></a> </div>
+                        <div class="col-md-2 col-sm-2 col-xs-2"> <a href="#"><span class="hidden-xs hidden-sm ">Twitter</span><span class="visible-xs visible-sm hidden-md hidden-lg"><i class="fa fa-twitter"></i></span></a> </div>
+                        <div class="col-md-2 col-sm-2 col-xs-2"> <a href="#"><span class="hidden-xs hidden-sm ">Google+</span><span class="visible-xs visible-sm hidden-md hidden-lg"><i class="fa fa-google-plus"></i></span></a> </div>
+                        <div class="col-md-2 col-sm-2 col-xs-2"> <a href="#"><span class="hidden-xs hidden-sm ">Pinterest</span><span class="visible-xs visible-sm hidden-md hidden-lg"><i class="fa fa-pinterest"></i></span></a> </div>
+                        <div class="col-md-2 col-sm-2 col-xs-2"> <a href="#"><span class="hidden-xs hidden-sm ">Linkedin</span><span class="visible-xs visible-sm hidden-md hidden-lg"><i class="fa fa-linkedin"></i></span></a> </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- Modal -->
+    <div class="modal left fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span> </button>
+                    <h4 class="modal-title" id="myModalLabel">Left Sidebar</h4> </div>
+                <div class="modal-body">
+                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                </div>
+            </div>
+            <!-- modal-content -->
+        </div>
+        <!-- modal-dialog -->
+    </div>
+    <!-- modal -->
+    <!-- Modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    <h4 class="modal-title" id="myModalLabel1">New Account Registration</h4> </div>
+                <div class="modal-body">
+                    <form class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="first-name">First Name</label>
+                            <input type="text" class="form-control" id="first-name" placeholder="First Name"> </div>
+                        <div class="form-group col-sm-6">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" class="form-control" id="last-name" placeholder="Last Name"> </div>
+                        <div class="checkbox col-xs-12">
+                            <label>
+                                <input type="checkbox" id="customer-type">Already a Customer?</label>
+                        </div>
+                        <div class="new-customer clearfix">
+                            <div class="form-group col-sm-6">
+                                <label for="email-address">Email Address</label>
+                                <input type="email" class="form-control" id="email-address" placeholder="Email"> </div>
+                            <div class="form-group col-sm-6">
+                                <label for="confirm-first-name">Confirm Email Address</label>
+                                <input type="email" class="form-control" id="confirm-first-name" placeholder="Email"> </div>
+                            <div class="form-group col-sm-6">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password"> </div>
+                            <div class="form-group col-sm-6">
+                                <label for="confirm-password">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirm-password" placeholder="Password"> </div> <small class="col-xs-12">Password must be a minimum of 8 characters and contain at least 1 number and 1 letter.</small>
+                            <div class="col-xs-12">
+                                <label class="c-input c-checkbox">
+                                    <input type="checkbox"> <span class="c-indicator"></span> Check this custom checkbox</label>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label for="company-name">Company Name</label>
+                                <input type="text" class="form-control" id="company-name" placeholder="Company Name"> </div>
+                            <div class="form-group col-sm-12">
+                                <label for="address-one">Address 1</label>
+                                <input type="text" class="form-control" id="address-one" placeholder="House #, Street"> </div>
+                            <div class="form-group col-sm-12">
+                                <label for="address-two">Address 2</label>
+                                <input type="text" class="form-control" id="address-two" placeholder="Apt./Unit #"> </div>
+                            <div class="form-group col-sm-3">
+                                <label for="zip-code">Zip Code</label>
+                                <input type="tel" class="form-control" id="zip-code" placeholder="5 digit zip"> </div>
+                            <div class="form-group col-sm-6">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" id="city" placeholder="City, Town"> </div>
+                            <div class="form-group col-sm-3">
+                                <label for="state">State</label>
+                                <input type="text" class="form-control" id="state" placeholder="State"> </div>
+                            <div class="form-group col-sm-6">
+                                <label for="phone">Phone</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Phone number"> </div>
+                        </div>
+                        <div class="existing-customer clearfix">
+                            <div class="form-group col-sm-6">
+                                <label for="customer-number">Customer #:</label>
+                                <input type="tel" class="form-control" id="customer-number" placeholder="Your Customer Number"> </div>
+                            <div class="form-group col-sm-6">
+                                <label for="zip-code">Zip Code</label>
+                                <input type="tel" class="form-control" id="zip" placeholder="5 digit zip"> </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-default">Create Account</button>
+                            <button type="submit" class="btn btn-danger">Verify Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- JAVASCRIPT =============================-->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vendors/slick/slick.min.js"></script>
+    <script src="js/vendors/jquery.easing.min.js"></script>
+    <script src="js/vendors/stellar.js"></script>
+    <script src="js/vendors/animsition.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
