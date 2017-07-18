@@ -3,11 +3,11 @@
 
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Business Directory Template Loocall</title>
+    <title>RVbnb | On-demand parking for your RV.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Business Directory Template Loocall ">
+    <meta name="description" content="On-demand parking for your RV.">
     <meta name="keywords" content="">
-    <meta name="author" content="Codenpixel">
+    <meta name="author" content="ThirdHand Bangladesh">
     <!-- FAVICON -->
     <link rel="shortcut icon" href="">
     <!-- BOOTSTRAP -->
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="css/animsition.min.css">
     <link rel="stylesheet" href="js/vendors/slick/slick.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,7 +34,7 @@
             <nav class="navbar-default navbar-fixed-top">
                 <div class="container">
                     <a href="#" class="nav-trigger hidden-xs" data-toggle="modal" data-target="#myModal"></a>
-                    <div class="navbar-header"> <a href="./index.html" class="navbar-brand">L<span>oo</span>call</a> </div>
+                    <div class="navbar-header"> <a href="./index.html" class="navbar-brand">rv<span>bnb</span></a> </div>
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
@@ -43,45 +44,10 @@
                         </ul>
 
                     </div>
-                    <div class="header-widget pull-right"> <a href="#" class="h-cart dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Cart <span class="item-count">0</span></a>
-                        <ul class="dropdown-menu dropdown-menu-lg">
-                            <li class="notifi-title">My Coupons</li>
-                            <li class="list-group">
-                                <!-- list item-->
-                                <a href="javascript:void(0);" class="list-group-item">
-                                    <div class="media">
-                                        <div class="media-left"> <img src="http://placehold.it/120x80" alt=""> </div>
-                                        <div class="media-body clearfix">
-                                            <div class="media-heading">Up to 30%</div>
-                                            <p class="m-0"> <small>Shopname coupon</small> </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- list item-->
-                                <a href="javascript:void(0);" class="list-group-item">
-                                    <div class="media">
-                                        <div class="media-left"> <img src="http://placehold.it/120x80" alt=""> </div>
-                                        <div class="media-body clearfix">
-                                            <div class="media-heading">Up to 30%</div>
-                                            <p class="m-0"> <small>Shopname coupon</small> </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- list item-->
-                                <a href="javascript:void(0);" class="list-group-item">
-                                    <div class="media">
-                                        <div class="media-left"> <img src="http://placehold.it/120x80" alt=""> </div>
-                                        <div class="media-body clearfix">
-                                            <div class="media-heading">Up to 30%</div>
-                                            <p class="m-0"> <small>Shopname coupon</small> </p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <!-- last list item -->
-                                <a href="javascript:void(0);" class="list-group-item"> <small>Print all coupons</small> </a>
-                            </li>
-                        </ul> <a href="#" class="h-login" data-toggle="modal" data-target="#myModal2" data-tab="login">Sign In</a>
-                         </div>
+                    <div class="header-widget pull-right">
+                        <a href="#" class="h-login" data-toggle="modal" data-target="#myModal2" data-tab="login">Become a Host</a>
+                        <a href="#" class="h-login" data-toggle="modal" data-target="#myModal2" data-tab="login">Sign In</a>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -89,12 +55,15 @@
         <div class="intro" data-stellar-background-ratio="0.55">
             <div class="container">
                 <div class="text-center">
-                    <h2>RVBnB</h2>
+                    <h2 style="font-family: Pacifico;">rvbnb</h2>
                     <p class="lead">On-demand parking for your RV.</p>
                 </div>
                 <form class="intro-search" action="directory_search_list.html">
-                    <input type="text" placeholder="What are you looking for ?">
-                    <button type="submit">Search <img src="images/icons/search.png" alt="" /> </button>
+                    <input type="text" placeholder="Enter location">
+             
+                    <input type="text" id="datepicker" size="30" placeholder="Enter date">
+
+                    <button type="submit">Search <img src="images/icons/search.png" alt=""/> </button>
                 </form>
             </div>
         </div>
@@ -267,18 +236,15 @@
                             <br> <a href="#">Entrepreneurship</a>
                     </div>
                     <div class="col-md-3 col-sm-3 footer-widget">
-                        <h5>How it works</h5>
+                        <h5>Join us</h5>
                         <p> <a href="#">What we do</a>
                             <br> <a href="#">Who we are</a>
                             <br> <a href="#">Join the team</a>
-                            <br> <a href="#">Press</a>
-                            <br> <a href="#">Contact Us</a>
                             <br> <a href="#">Become a Host</a> </p>
                     </div>
                     <div class="col-md-3 col-sm-3 footer-widget">
                         <h5>Advertise</h5>
                         <p> <a href="#">Advertise With Us</a>
-                            <br> <a href="#">Account Login</a>
                             <br> <a href="#">Partner With Us</a> </p>
                     </div>
                     <div class="col-md-3 col-sm-3 footer-widget last">
@@ -287,7 +253,7 @@
                             <li> <img src="images/other/1/2.png" class="img-responsive" alt="" /> </li>
                             <li> <img src="images/other/1/3.png" class="img-responsive" alt="" /> </li>
                         </ul>
-                        <p>Stay in the loop on all upcoming promotions, discounts and latest updates</p>
+                        <p>Stay in the loop on all upcoming promotions, discounts and latest updates.</p>
                         <form class="f-newsletter">
                             <input type="email" placeholder="E-mail address"> </form>
                         <p class="copy">&copy; 2017 RVBnB. All rights reserved.</p>
@@ -311,11 +277,18 @@
     <!-- JAVASCRIPT =============================-->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/vendors/slick/slick.min.js"></script>
     <script src="js/vendors/jquery.easing.min.js"></script>
     <script src="js/vendors/stellar.js"></script>
     <script src="js/vendors/animsition.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+      $( function() {
+        $( "#datepicker" ).datepicker();
+        $( "#datepicker" ).datepicker( "option", "showAnim", 'slide');
+      });
+    </script>
 </body>
 
 </html>
