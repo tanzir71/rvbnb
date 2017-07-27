@@ -14,8 +14,8 @@
 | path to your installation.
 |
 */
-//$config['base_url']	= 'http://localhost/rv/';
-$config['base_url']	= 'http://desiree.thirdhandbd.com/sohel/';
+$config['base_url']	= 'http://localhost/rv/';
+//$config['base_url']	= 'http://desiree.thirdhandbd.com/sohel/';
 
 /*
 |--------------------------------------------------------------------------

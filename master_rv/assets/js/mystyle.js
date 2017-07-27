@@ -3,7 +3,7 @@ var li=links(); //global declare
 
 $( function() {
   $( "#from_date" ).datepicker({ minDate: 0, dateFormat: 'yy-mm-dd'});
-  $( "#to_date" ).datepicker();
+  $( "#to_date" ).datepicker({ minDate: 0, dateFormat: 'yy-mm-dd'});
 } );
 
 var dateToday = new Date();
@@ -168,3 +168,36 @@ function codeAddress(address,amount,id,title)
    }
   });
 }
+
+$("#con_pass").blur(function(){
+  var pass_up = $("#pass_up").val().trim();
+  var con_pass = $("#con_pass").val().trim();
+
+
+  if (pass_up == con_pass) {
+    $("#match_result").html('Password Match');
+  }else{
+    $("#match_result").html('Password not Match');
+  }
+});
+
+
+
+
+
+
+
+function initialize_search() {
+  var search_country = document.getElementById('search_country');
+  var autocomplete = new google.maps.places.Autocomplete(search_country);
+
+  var search_state = document.getElementById('search_state');
+  var autocomplete = new google.maps.places.Autocomplete(search_state);
+
+  var search_city = document.getElementById('search_city');
+  var autocomplete = new google.maps.places.Autocomplete(search_city);
+
+  var search_borough = document.getElementById('search_borough');
+  var autocomplete = new google.maps.places.Autocomplete(search_borough);
+}
+google.maps.event.addDomListener(window, 'load', initialize_search);

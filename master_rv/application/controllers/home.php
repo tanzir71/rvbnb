@@ -75,6 +75,84 @@ class Home extends CI_Controller{
 	}
 
 
+	public function signup(){
+
+		$this->load->library('form_validation');      
+        $this->form_validation->set_rules('name',  'name',  'required');
+        $this->form_validation->set_rules('email',  'email',  'required');
+        $this->form_validation->set_rules('password',  'Password',  'required|min_length[1]');
+        $this->form_validation->set_rules('confirm_password',  'Password',  'required|min_length[1]');
+        if ($this->form_validation->run() === FALSE)
+		{
+			redirect('home');
+		}else{
+
+			$name = $this->input->post('name');
+			$password = $this->input->post('password');
+			$confirm_password = $this->input->post('confirm_password');
+			$email = $this->input->post('email');
+
+			if (empty($name) || empty($password) || empty($confirm_password) || empty($email)) {
+				redirect('home');
+			}else{
+				$name_ch = $this->user_model->user_check($name);
+				if ($name_ch==0) {
+					redirect('home');
+				}else{
+
+					if ($password == $confirm_password) {
+						$user_add = array(
+							'user' => $name, 
+							'password' => $confirm_password, 
+							'email' => $email, 
+						);
+						$this->db->insert('alluser', $user_add);
+						
+
+						$data = array(
+						'name' => $name,
+						'pass' => $confirm_password
+						);
+				
+						$this->db->where('user', $data['name']);
+						$query = $this->db->get("alluser");
+						$row = $query->row();
+				
+				
+				 		if($row->password == $data['pass'])
+						{
+							$this->session->set_userdata('admin', $row->id);
+							
+							session_start();
+							$session_id = session_id( );
+							
+							$da=array(
+								"session" => $session_id
+							);
+													
+							
+							$this->db->where('id',$row->id);
+							$this->db->update('alluser',$da);
+
+							redirect('admin');
+						
+						}
+
+
+					}else{
+						redirect('home');
+					}
+				}
+			}
+
+
+		}
+	}
+
+
+	
+
+
 
 }
 ?>

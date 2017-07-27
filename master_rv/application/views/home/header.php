@@ -15,6 +15,7 @@
     <!-- ICONS -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/icons/fontawesome/css/style.css">
     <!-- THEME / PLUGIN CSS -->
+    
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/animsition.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/js/vendors/slick/slick.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
@@ -46,10 +47,86 @@
 
                     </div>
                     <div class="header-widget pull-right">
-                        <a href="#" class="h-login" data-toggle="modal" data-target="#myModal2" data-tab="login">Become a Host</a>
-                        <a href="#" class="h-login" data-toggle="modal" data-target="#myModal2" data-tab="login">Sign In</a>
+                        
+                        <?php 
+                        if ($this->session->userdata('admin')) { ?>
+                            <a href="<?php echo base_url(); ?>admin/become_a_host" class="h-login">Become a Host</a>
+                            <a href="<?php echo base_url(); ?>admin/profile" class="h-login">Profile</a>
+                            <a href="<?php echo base_url(); ?>admin/logout" class="h-login">Logout</a>
+                        <?php }else{ ?>
+                            <a href="#" class="h-login" data-toggle="modal" data-target="#login_model" data-tab="login">Become a Host</a>
+                            <a href="#" class="h-login" data-toggle="modal" data-target="#sign_up" data-tab="login">Sign Up</a>
+                            <a href="#" class="h-login" data-toggle="modal" data-target="#login_model" data-tab="login">Sign In</a>
+                        <?php } ?>
+
                     </div>
                 </div>
             </nav>
         </header>
         <!-- start: Intro search section -->
+
+
+
+        <div class="modal fade-scale" id="login_model" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
+                        <h4 class="modal-title text-center">LOGIN</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="col-md-offset-1 col-sm-offset-1 col-md-10 col-sm-10 col-lg-10" style="margin-top: 20px;">
+                                
+                            <form class="form-signin" method="post" action="<?php echo base_url(); ?>member/adminlogin">
+                                <div class="intro-login">
+                                    <input type="text" name="name" autofocus="1" placeholder="Enter username" autocomplete="off">
+                                    <input type="password" name="password" placeholder="Enter Password">
+
+                                    <button type="submit">LOGIN <i class="fa fa-sign-in" aria-hidden="true"></i> </button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <h4>Don't have an account? <button type="button" class="btn btn-default"  data-toggle="modal" data-target="#sign_up" data-dismiss="modal">Sign up</button></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade-scale" id="sign_up" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></button>
+                        <h4 class="modal-title text-center">SING UP</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="col-md-offset-1 col-sm-offset-1 col-md-10 col-sm-10 col-lg-10" style="margin-top: 20px;">
+                                
+                            <form class="form-signin" method="post" action="<?php echo base_url(); ?>home/signup">
+                                <div class="intro-login">
+                                    <input type="text" name="name" autofocus="1" placeholder="Enter username" autocomplete="off" >
+                                    <input type="password" name="password" id="pass_up" placeholder="Enter Password">
+                                    <input type="password" name="confirm_password" id="con_pass" onclick="con_pass()" placeholder="Enter Confirm Password">
+                                    <span id="match_result"></span>
+                                    <input type="email" name="email" placeholder="Enter Email">
+
+                                    <button type="submit">SIGN UP <i class="fa fa-sign-in" aria-hidden="true"></i> </button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <h4>Already have an account? <button type="button" class="btn btn-default"  data-toggle="modal" data-target="#login_model" data-dismiss="modal">log In</button></h4>
+                    </div>
+                </div>
+            </div>
+        </div>

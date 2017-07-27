@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'thirfrnb_sohel';//thirfrnb_sohel
-$db['default']['password'] = 'dhkctg17';//dhkctg17
-$db['default']['database'] = 'thirfrnb_rv';//thirfrnb_rv
+$db['default']['username'] = 'root';//thirfrnb_sohel
+$db['default']['password'] = '';//dhkctg17
+$db['default']['database'] = 'rv';//thirfrnb_rv
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

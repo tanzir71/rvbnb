@@ -41,6 +41,29 @@ class User_Model extends CI_Model{
             return $row->title;            
         }
 	}
+
+	public function user_check($name){
+		$this->db->where('user',$name);
+		$query = $this->db->get("alluser");
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            return 0;            
+        }else{
+        	return 1;
+        }
+	}
+
+    public function user_all_data($id){
+        $this->db->where('id', $id);
+        $query = $this->db->get("alluser");
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            return $row;
+        }
+        return false;
+    }
 	
 	
 	

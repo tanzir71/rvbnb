@@ -3,7 +3,7 @@
     <div class="container">
         <div class="text-center">
             <h2 style="font-family: Pacifico;">rvbnb</h2>
-            <p class="lead">On-demand parking for your RV.</p>
+            <p class="lead">Where you like to Park?</p>
         </div>
         <div class="intro-search">
             <input type="text" id="location_input" autofocus="1" placeholder="Enter location" autocomplete="off" >
