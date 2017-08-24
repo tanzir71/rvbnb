@@ -1,0 +1,401 @@
+.ui-menu-item{
+	padding: 8px 0 8px 20px;
+}
+.listing-info{height: 260px}
+
+
+/*modal style*/
+.modal{
+    border-radius: 0; 
+}
+.modal-header{
+    background: #DD652F ;
+    color: #fff;
+}
+.modal-title {
+  color: #fff;
+  font-size: 22px;
+}
+.modal-body {
+  background: #f5f5f5 none repeat scroll 0 0;
+  min-height: 440px;
+  overflow: auto;
+}
+.modal-footer{background: #ddd;}
+
+.modal-dialog{
+	margin: 110px auto 10px
+}
+.fade-scale {
+  transform: scale(0);
+  opacity: 0;
+  -webkit-transition: all .25s linear;
+  -o-transition: all .25s linear;
+  transition: all .25s linear;
+}
+.fade-scale.in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal-footer{
+	text-align: center;
+}
+/*modal style end*/
+
+.intro-login {
+    width: 100%;
+    margin: 0 auto;
+    display: inline-block;
+    text-align: center;
+}
+
+
+
+.intro-login input {
+  border: medium none;
+  border-radius: 3px;
+  color: #000;
+  font-size: 16px;
+  height: 62px;
+  margin-left: 0.25%;
+  padding: 0 34px;
+  width: 100%;
+  border: 1px solid #ddd;
+  margin: 10px 0;
+}
+.intro-login button {
+  background: #DD652F none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 16px;
+  height: 62px;
+  margin-left: 6px;
+  margin-top: 20px;
+  padding: 0 53px;
+  text-align: left;
+  width: 190px;
+}
+
+
+
+
+/*templated design*/
+
+.input_check{
+  height: 0;
+}  
+
+.page_height{
+  padding-top: 110px;
+}
+
+
+.become_review {
+  background: #eee none repeat scroll 0 0;
+  line-height: 40px;
+  margin: 5px 0;
+}
+
+
+
+
+
+
+/*profile styling*/
+.profile_left_bar {
+  background: #eee none repeat scroll 0 0;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+.profile_img {
+  height: 180px;
+  text-align: center;
+}
+.profile_img > img {
+  height: 100%;
+  max-width: 100%;
+}
+.profile_name {
+  text-align: center;
+}
+
+.profile_categories{}
+.profile_categories > h4 {
+  background: #DD652F none repeat scroll 0 0;
+  color: #fff;
+  padding: 5px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+.profile_categories>ul{}
+.profile_categories>ul>li{}
+.profile_categories > ul > li > a {
+  background: #fff none repeat scroll 0 0;
+  border-bottom: 1px solid #eee;
+  color: #555555;
+  display: block;
+  padding: 5px;
+  transition: 0.5s;
+}
+.profile_categories>ul>li>a:hover{
+  text-decoration: none;
+  color: #333;
+  background: #eee;
+}
+.panel-default > .panel-heading {
+  background-color: #DD652F;
+  color: #fff;
+}
+/* end of profile left side bar*/
+.list-icon.icon_js {
+  font-size: 15px;
+  line-height: 28px;
+  margin-top: 9px;
+}
+
+.list-icon.icon_js i{
+  color: #505050;
+}
+
+.map_info_style {
+  background: #DD652F none repeat scroll 0 0;
+  display: block;
+  color: #fff;
+  padding: 6px;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.map_info_style:hover {color: #fff;}
+
+
+.location_style{}
+.location_style > ul {
+  background: #f3f3f3 none repeat scroll 0 0;
+  margin: 16px 0;
+  padding: 12px;
+}
+.location_style > ul > li {
+  line-height: 26px;
+}
+
+.location_style > ul > li>span {
+  color: #454545;
+}
+
+.dp-about p.space120 {
+  padding-bottom: 18px;
+}
+.lpps{
+  color: #545454;
+}
+
+.dp-about p.space80 {
+  padding-bottom: 19px;
+}
+
+.dph-reviews {
+  padding-top: 80px;
+}
+
+.input-group.input-daterange {
+  border: 1px solid #c4c4c4;
+  margin-bottom: 10px;
+}
+
+/*owl carousel*/
+.owl-carousel {
+  height: 400px;
+  margin-bottom: 20px;
+}
+.item{height: 400px;width: 100%;}
+
+.owl-prev {
+  background: rgba(221, 101, 47, 0.6) none repeat scroll 0 0;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  color: #fff;
+  display: block;
+  font-size: 28px;
+  height: 55px;
+  line-height: 55px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 55px;
+  left: 0;
+}
+.owl-next {
+  background: rgba(221, 101, 47, 0.6) none repeat scroll 0 0;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  color: #fff;
+  display: block;
+  font-size: 28px;
+  height: 55px;
+  line-height: 55px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 50%;
+  width: 55px;
+}
+.pad0{
+  padding: 0;
+}
+.item > img {
+  height: 100%;
+  width: 100%;
+}
+.table tr, .table td{
+  font-size: 14px;
+}
+.parking_capacity {
+  color: #454545;
+  line-height: 21px;
+  text-decoration: underline;
+  font-size: 15px;
+}
+
+
+
+/*rating*/
+.set-display-ib {
+  display: inline-block;
+  vertical-align: middle;
+}
+.col {
+  width: 49%;
+  float: left;
+}
+.col + .col {
+  float: right;
+}
+.rating-box {
+  display: inline-block;
+  vertical-align: top;
+}
+.rating-box ul {
+  margin: 0;
+  padding: 0;
+}
+.rating-box ul li {
+  background: #A7A9AC;
+  color: #ffffff;
+  display: inline-block;
+  vertical-align: top;
+  -webkit-border-radius: 0 1px 2px #cccccc;
+  -moz-border-radius: 0 1px 2px #cccccc;
+  border-radius: 0 1px 2px #cccccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin: 0;
+  padding: 3px 5px;
+}
+.rating-box ul li.hovered {
+  background: #FCD404;
+}
+.rating-box .info {
+  color: #3c3c3c;
+  font-size: 0.8em;
+}
+.rating-box .info.max {
+  float: right;
+}
+
+.image_review{
+  height: 80px;
+  width: 80px;
+}
+.star_rating>i{
+  font-size: 34px !important
+}
+
+
+
+
+.message_body {
+  background: #fff none repeat scroll 0 0;
+  display: block;
+  height: 400px;
+  margin-bottom: 20px;
+  overflow: auto;
+}
+
+.mmg {
+  border: 1px solid #888;
+  border-radius: 4px;
+  margin: 0 0 10px;
+  padding: 6px;
+  background: #eee;
+}
+.mmg > h4 {
+  font-size: 15px !important;
+  margin: 0 0 5px;
+}
+.mmg > p {
+  color: #565656;
+  font-size: 12px;
+  text-align: justify;
+}
+.mmg > span {
+  display: block;
+  font-size: 11px; 
+  text-align: right;
+}
+
+
+.mmg_extra {
+  border: 1px solid #888;
+  border-radius: 4px;
+  margin: 0 0 10px;
+  padding: 6px;
+}
+.mmg_extra > h4 {
+  font-size: 15px !important;
+  text-align: right;
+  margin: 0 0 5px;
+}
+.mmg_extra > p {
+  color: #565656;
+  font-size: 12px;
+  text-align: right;
+}
+.mmg_extra > span {
+  display: block;
+  font-size: 11px;
+}
+.li-name {
+  font-size: 18px;
+  font-weight: 700;
+  height: 65px;
+  margin-bottom: 10px;
+}
+.required_m{
+  color: #f00;
+}
+
+.dph-info h4 {
+  font-size: 24px;
+}
+
+.name_dollar {
+  background: rgb(251, 136, 76) none repeat scroll 0 0;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.name_dollar > p {
+  background: rgba(255, 255, 255, 0.28) none repeat scroll 0 0;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 13px;
+  margin-bottom: 3px;
+  padding: 12px;
+  text-align: center;
+}
