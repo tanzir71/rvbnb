@@ -1,10 +1,10 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/owl.carousel.css">
 <?php 
     $this->db->where('id',$id);
-    $query = $this->db->get("host");
+    $query_main_data = $this->db->get("host");
 
-    if ($query->num_rows() > 0) {
-        $value = $query->row();
+    if ($query_main_data->num_rows() > 0) {
+        $value = $query_main_data->row();
 
 
         $get_user_data = $this->user_model->get_user_email_phone($value->userid);
@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-
+ 
 
 
     <div class="dp-header">
@@ -68,7 +68,7 @@
                         <h4><?php echo $value->title; ?></h4>
                         <div class="col-sm-6" style="margin-bottom: 10px">
                             <div class="name_dollar">
-                                <p style="font-size: 20px"><i class="fa fa-usd"></i>34</p>
+                                <p style="font-size: 20px"><i class="fa fa-usd"></i><?php echo $value->amount; ?></p>
                                 <p style="font-size: 20px"><i class="fa fa-user"></i> <?php echo $user_data->fname.' '.$user_data->lname; ?></p>
                             </div>
                             
@@ -100,14 +100,14 @@
                                 $this->db->where('id1', $this->session->userdata('airbnb'));
                                 $this->db->where('id2', $user_data->id);
                                 $this->db->where('root', 0);
-                                $query = $this->db->get("inbox");
+                                $query_inbox = $this->db->get("inbox");
 
-                                if ($query->num_rows()>0) {
-                                    $value_s = $query->row();
+                                if ($query_inbox->num_rows()>0) {
+                                    $value_s = $query_inbox->row();
 
-                                    $this->db->where('id',$value_s->id2);
+                                    /*$this->db->where('id',$value_s->id2);
                                     $this->db->where('status',1);
-                                    $query=$this->db->get('alluser');
+                                    $query=$this->db->get('alluser');*/
                             ?>
                                     <button class="btn btn-default btn-block btn-lg" 
                                     value="<?php echo $value_s->id.':'.$this->session->userdata('airbnb').':'.$user_data->id; ?>" data-toggle="modal" data-target="#replay_message_sender" onclick="reply_inbox_sender(this)">Send Message</button>
@@ -418,6 +418,9 @@
                                 
                                 <div class="input-group input-daterange">
                                     <input type="hidden" value="<?php echo $value->id; ?>" id="host_id">
+                                    <input type="hidden" value="<?php echo $this->session->userdata('airbnb'); ?>" id="m_id">
+                                    <input type="hidden" value="<?php echo $value->userid; ?>" id="c_id">
+
                                     <input id="from" type="text" class="form-control host_date_from" value="<?php echo $value->from_date ?>" readonly disable>
 
                                   <div class="input-group-addon">to</div>
@@ -457,65 +460,65 @@
 
 <script>
 
-function initialized() {
+    function initialized() {
 
 
-  var location = '<?php echo $value->location; ?>';
+      var location = '<?php echo $value->location; ?>';
 
-  geocoder = new google.maps.Geocoder();
-  var mapOptions = 
-  {
-    zoom: 18
-  }
-
-  map = new google.maps.Map(document.getElementById('street_map'), mapOptions);
-  
-  codeAddresss(location);//call the function
-
-
-  
-}
-    
-
-function codeAddresss(address) 
-{
-  geocoder.geocode( {address:address}, function(results, status) 
-  {
-    if (status == google.maps.GeocoderStatus.OK) 
-    {
-      map.setCenter(results[0].geometry.location);//center the map over the result
-      //place a marker at the location
-      var marker = new google.maps.InfoWindow(
+      geocoder = new google.maps.Geocoder();
+      var mapOptions = 
       {
-          map: map,
-          position: results[0].geometry.location,
-          zoom: 18,
+        zoom: 18
+      }
 
-          content: '<div class="map_info_style"><i class="fa fa-map-marker" aria-hidden="true"></i> ' +address+'</div>'
-      });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-   }
-  });
-}
+      map = new google.maps.Map(document.getElementById('street_map'), mapOptions);
+      
+      codeAddresss(location);//call the function
 
 
-$('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    nav:true,
-    navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:1
-        },
-        1000:{
-            items:1
-        }
+      
     }
-})
+        
+
+    function codeAddresss(address) 
+    {
+      geocoder.geocode( {address:address}, function(results, status) 
+      {
+        if (status == google.maps.GeocoderStatus.OK) 
+        {
+          map.setCenter(results[0].geometry.location);//center the map over the result
+          //place a marker at the location
+          var marker = new google.maps.InfoWindow(
+          {
+              map: map,
+              position: results[0].geometry.location,
+              zoom: 18,
+
+              content: '<div class="map_info_style"><i class="fa fa-map-marker" aria-hidden="true"></i> ' +address+'</div>'
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+       }
+      });
+    }
+
+
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:1
+            },
+            1000:{
+                items:1
+            }
+        }
+    })
 </script>
 <?php }}} ?>

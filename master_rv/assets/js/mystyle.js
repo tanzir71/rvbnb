@@ -309,19 +309,27 @@ function password_change(){
 
 function park_now(){
   var id = $('#host_id').val().trim();
+  var m_id = $('#m_id').val().trim();
+  var c_id = $('#c_id').val().trim();
   var from_date = $('#from').val().trim();
   var to_date = $('#to').val().trim();
 
-  if (to_date !== '' && from_date !== '') {
+  if (to_date !== '' && from_date !== '' && id !== '' && m_id !== '' && c_id !== '') {
     $.ajax({
       type: 'POST',
       url:li+'user/park_now',
-      data:{to_date:to_date,from_date:from_date,id:id},
+      data:{to_date:to_date,from_date:from_date,id:id,m_id:m_id,c_id:c_id},
       dataType:'json',
       success: function(response){
 
-        //alert(response);
-        $('#show_payment_status').html(response);
+        if (response==1) {
+          window.location.href=li+"user/booking/"+id+"/"+from_date+"/"+m_id+"/"+to_date;
+        }else if(response==3){
+          $('#show_payment_status').html('You can not apply!');
+        }else{
+          $('#show_payment_status').html('Date selected invalid!');
+        }
+        
 
       },
       error: function(){
@@ -467,7 +475,7 @@ function reply_inbox(value){
               '</div>';
               }else if (type==id2) {
                 full_data += '<div class="mmg_extra">'+
-                '<h4>Myself</h4>'+
+                '<h4>Self</h4>'+
                 '<p>'+details+'</p>'+
                 '<span>'+added_date+'</span>'+
               '</div>';
@@ -535,7 +543,7 @@ function submit_messege(value){
               '</div>';
               }else if (type==id2) {
                 full_data += '<div class="mmg_extra">'+
-                '<h4>Myself</h4>'+
+                '<h4>Self</h4>'+
                 '<p>'+details+'</p>'+
                 '<span>'+added_date+'</span>'+
               '</div>';
@@ -658,7 +666,7 @@ function reply_inbox_sender(value){
               '</div>';
               }else if (type==id1) {
                 full_data += '<div class="mmg_extra">'+
-                '<h4>Myself</h4>'+
+                '<h4>Self</h4>'+
                 '<p>'+details+'</p>'+
                 '<span>'+added_date+'</span>'+
               '</div>';
@@ -726,7 +734,7 @@ function submit_messege_sender(value){
               '</div>';
               }else if (type==id1) {
                 full_data += '<div class="mmg_extra">'+
-                '<h4>Myself</h4>'+
+                '<h4>Self</h4>'+
                 '<p>'+details+'</p>'+
                 '<span>'+added_date+'</span>'+
               '</div>';

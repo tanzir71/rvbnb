@@ -562,6 +562,10 @@
 	public function park_now(){
 
 		$id = $this->input->post('id');
+
+		$host_c_id = $this->input->post('c_id');
+		$m_id = $this->session->userdata('airbnb');
+
 		$from_date = strtotime($this->input->post('from_date'));
 		$to_date = strtotime($this->input->post('to_date'));
 
@@ -575,14 +579,33 @@
 
 
 			if ($host_from <= $from_date && $to_date <= $host_to && $from_date <= $host_to && $from_date <= $to_date) {
-				$data =  'Payment not intregated.';
+				if ($m_id == $host_c_id) {
+					$data = 3;
+				}else{
+					$data =  1;
+				}
 			}else{
-				$data = 'Date selected invalid!';
+				$data =  2;
 			}
 		}
 
 
 		echo json_encode($data);
+	}
+
+
+	public function booking($id,$from_date,$m_id,$to_date){
+
+		$data['hostid'] = $id;
+		$data['m_id'] = $m_id;
+		$data['from_date'] = $from_date;
+		$data['to_date'] = $to_date;
+
+		$data['title'] = 'Booking | On-demand parking for your RV.';
+		$this->load->view('homes/header',$data);
+
+		$this->load->view('user/booking', $data);
+		$this->load->view('homes/footer');
 	}
 
 

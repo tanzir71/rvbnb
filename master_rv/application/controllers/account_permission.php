@@ -66,32 +66,21 @@
 		$info=$this->db->get('setting');
 		
 		foreach($info->result_array() as $val)
-				{
-					
-				$post= array();
-				$post["id"]= $val["id"];
-				$post["head"]= $val["head"];
-				$post["type"]= $val["type"];
-				$post["name"]= $val["name"];
-				$post["acces"]= $val["acces"];
-				array_push($response["posts"], $post);
+		{
+			
+			$post= array();
+			$post["id"]= $val["id"];
+			$post["head"]= $val["head"];
+			$post["type"]= $val["type"];
+			$post["name"]= $val["name"];
+			$post["acces"]= $val["acces"];
+			array_push($response["posts"], $post);
 
-				}
+		}
 		echo json_encode($response);
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-			public function add_update(){
+	public function add_update(){
 		
 		
 		$this->load->database();	
@@ -117,7 +106,7 @@
 		
 		$w = $this->session->userdata('wire');
 		
-				$this->load->model('setting');
+		$this->load->model('setting');
 	
 		
 		$id=$_POST['id'];
@@ -126,38 +115,38 @@
 
 
               
-                $check=$this->setting->anyName("setting","head",$id,"id");
+        $check=$this->setting->anyName("setting","head",$id,"id");
 
-               $lcheck=$this->setting->anyName("ledger","parent_head_id",$id,"id");
+        $lcheck=$this->setting->anyName("ledger","parent_head_id",$id,"id");
 
-               $pcheck=$this->setting->anyName("product_ledger","head",$id,"id");
+        $pcheck=$this->setting->anyName("product_ledger","head",$id,"id");
 
 
 
-               if(!empty($check) || !empty($lcheck) || !empty($pcheck))
-                 echo 1; //you can't delete
+        if(!empty($check) || !empty($lcheck) || !empty($pcheck))
+            echo 1; //you can't delete
 
-                else{
+        else{
 
-		$this->db->where('id',$id);
-		$this->db->delete('setting');
-		
-		
-		$this->db->where('head',$id);
-		$this->db->delete('setting');
+			$this->db->where('id',$id);
+			$this->db->delete('setting');
+			
+			
+			$this->db->where('head',$id);
+			$this->db->delete('setting');
 		
 		
 		
 		
 		if(!empty($w))
 			$this->db->where("(ware='".$w."' OR ware='0')");
-		$response["posts"]= array();
-		$this->db->where('head',$head);
-		$info=$this->db->get('setting');
-		
-		foreach($info->result_array() as $val)
-				{
-					
+			$response["posts"]= array();
+			$this->db->where('head',$head);
+			$info=$this->db->get('setting');
+			
+			foreach($info->result_array() as $val)
+			{
+				
 				$post= array();
 				$post["id"]= $val["id"];
 				$post["head"]= $val["head"];
@@ -166,12 +155,8 @@
 				$post["acces"]= $val["acces"];
 				array_push($response["posts"], $post);
 
-				}
-		echo json_encode($response);
-
-
-
-
+			}
+			echo json_encode($response);
           }
 		
 	}

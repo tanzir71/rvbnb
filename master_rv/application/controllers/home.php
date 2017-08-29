@@ -76,7 +76,7 @@ class Home extends CI_Controller{
 
 
 	public function host_rv($id, $title){
-		$sender = $this->session->userdata('airbnb');
+		//$sender = $this->session->userdata('airbnb');
 
 		$title = $this->user_model->title_apply($id);
 

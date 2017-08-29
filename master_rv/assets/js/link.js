@@ -1,6 +1,6 @@
 function links(){
-	var li="http://desiree.thirdhandbd.com/";
-	//var li="http://localhost/rv/";
+	//var li="http://desiree.thirdhandbd.com/";
+	var li="http://localhost/rv/";
 	return li;
 }
 

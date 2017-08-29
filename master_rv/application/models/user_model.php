@@ -84,7 +84,6 @@ class User_Model extends CI_Model{
          $this->db->where('host.reviews',1);
          $this->db->where('host.status',1);
 
-        $this->db->order_by('host.id', 'desc');
         $this->db->group_by('files.hostid', 'desc');
 		$query = $this->db->get("files");
 
@@ -154,10 +153,6 @@ class User_Model extends CI_Model{
         }
         return false;
     }
-
-
-
-
     
     
     public function insert($data = array()){
@@ -363,6 +358,23 @@ class User_Model extends CI_Model{
         $query = $this->db->get("inbox");
         return $query;
     }
+
+
+    public function get_booking_user($m_id,$table){
+        $this->db->where('id', $m_id);
+        $this->db->where('status', 1);
+        $query = $this->db->get($table);
+        return $query;
+    } //admin
+
+    public function get_booking_user_f($m_id,$table){
+        $this->db->where('hostid', $m_id);
+        $this->db->where('status', 1);
+        $this->db->order_by('id', 'desc');
+        $this->db->limit(1);
+        $query = $this->db->get($table);
+        return $query;
+    } //admin
 
 
     
