@@ -40,22 +40,23 @@ class Home extends CI_Controller{
 	}
 
 	public function autocomplete_view()
-	{		
+	{
+		$today = date("Y-m-d");		
 		
 		$this->load->database();	
 		
 		$location=$this->input->post('id');
 		
-		
+        
 
-		$this->db->like('location', $location);
-		$this->db->or_like('country', $location); 
-		$this->db->or_like('state', $location); 
-		$this->db->or_like('city', $location);
+		$this->db->like('location', $location); //location query have all data. exp-country,state,city,street,zip
+
+		$this->db->where('to_date >=', $today); //previus date have show
 
 
 		$this->db->where('reviews', 1);
 		$this->db->where('status', 1);
+
 
 		$this->db->group_by('city','desc'); //last added
 		$info=$this->db->get('host');
@@ -65,7 +66,7 @@ class Home extends CI_Controller{
 			$data=array();
 			foreach($info->result_array() as $val)
 			{
-				array_push($data,$val['city']);
+				array_push($data,$val['city']); //only city showing
 			}
 			echo json_encode($data);
 

@@ -75,11 +75,16 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="name_dollar">
-                                <?php 
-                                $a = 2;
-                                if ($a==2) { ?>
-                                    <p><i class="fa fa-lock"></i> Contact information will be revealed here after you make a booking.</p>
-                                <?php }else{ ?>
+                                <?php
+
+
+                                $this->db->where('m_userid', $this->session->userdata('airbnb'));
+                                $this->db->where('hostid', $value->id);
+                                $this->db->where('payment_status','success');
+                                $this->db->where('status','1');
+                                $pay_query = $this->db->get('payments');
+                                if ($pay_query->num_rows()>0) {  ?>
+
                                     <p>
                                         <?php if (!empty($user_data->phone)) { ?>
                                         <i class="fa fa-phone-square"></i> <?php echo $user_data->phone; ?>
@@ -90,12 +95,19 @@
                                         <i class="fa fa-fa fa-envelope-o"></i> <?php echo $user_data->email; ?>
                                         <?php } ?>
                                     </p>
+                                    
+                                <?php }else{ ?>
+                                    
+
+                                    <p><i class="fa fa-lock"></i> Contact information will be revealed here after you make a booking.</p>
                                 <?php } ?>
                             </div>
                         </div>
                         <?php if (!empty($this->session->userdata('airbnb')) || !empty($this->session->userdata('session'))  || !empty($this->session->userdata('user'))) { ?>
                         <div class="col-sm-12">
                             <?php
+
+                            if ($this->session->userdata('airbnb') !== $value->userid) {
 
                                 $this->db->where('id1', $this->session->userdata('airbnb'));
                                 $this->db->where('id2', $user_data->id);
@@ -116,7 +128,7 @@
 
                                 <button type="button" value="<?php echo $user_data->id; ?>" class="btn btn-default btn-block btn-lg" onclick="confirm_chat_with_this_user(this)">Request to message user</button>
 
-                            <?php } ?>
+                            <?php } } ?>
 
                         </div>
 
@@ -276,11 +288,21 @@
 
                             <?php if (empty($this->session->userdata('airbnb')) || empty($this->session->userdata('session')) || empty($this->session->userdata('user'))) { ?>
                                 <a href="#" class="dpr-btn" data-toggle="modal" data-target="#login_model" data-tab="login">Login</a>
-                            <?php }else{ ?>
+                            <?php }else{ 
 
-                            <a href="#" class="dpr-btn" data-toggle="modal" data-target="#write_a_review" data-dismiss="modal"> <img src="<?php echo base_url() ?>assets/images/icons/4.png" alt="">Write a review</a>
+                                $this->db->where('m_userid', $this->session->userdata('airbnb'));
+                                $this->db->where('hostid', $value->id);
+                                $this->db->where('payment_status','success');
+                                $this->db->where('status','1');
+                                $pay_query = $this->db->get('payments');
+                                if ($pay_query->num_rows()>0) {
+                            ?>
+
+                            <a href="#" class="dpr-btn" data-toggle="modal" data-target="#write_a_review"> <img src="<?php echo base_url() ?>assets/images/icons/4.png" alt="">Write a review</a>
+
                             <input type="hidden" id="hostid" value="<?php echo $value->id; ?>">
                             <input type="hidden" id="userid" value="<?php echo $value->userid; ?>">
+
                             <div class="modal fade-scale" id="write_a_review">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -325,7 +347,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php } ?>
+                            <?php }} ?>
 
                         </div>
 
@@ -365,7 +387,7 @@
                                     $file_image_user = $row_user->images;
                                     $file_image_url = $row_user->picture_url;
                             ?>
-                                <li>
+                                <li id="review<?php echo $values_review['id'] ?>">
                                     <?php 
                                     if ($row_user->oauth_provider == 'facebook') {
                                     ?>
@@ -390,21 +412,49 @@
                                                     echo '<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>';
                                                 }
                                                 ?>
-                                            </span> 
+                                            </span>
+                                            <?php 
+                                            if ($row_user->id == $this->session->userdata('airbnb')) {
+                                            ?>
+                                            <button value="<?php echo $values_review['id'] ?>" class="btn btn-sm btn-default" onclick="remove_review(this)" style="margin-left: 414px"><i class="fa fa-times"></i></button>
+                                            <?php } ?>
                                         </span> 
 
                                         <?php echo $values_review['comment'] ?>
                                     </p>
                                     <div class="dpr-like"><?php echo $user_name_review ?></div>
                                 </li>
+
+
                             <?php } ?>
 
                         </ul>
 
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="book-table">
+
+
+                        <div class="bt-head text-center">
+                            <?php
+
+                            $this->db->where('hostid', $value->id);
+                            $this->db->where('payment_status','success');
+                            $this->db->where('status','1');
+                            $pay_query = $this->db->get('payments');
+                            if ($pay_query->num_rows()>0) {
+                                echo '<h5>Previous selected booking</h5>';
+                                foreach ($pay_query->result_array() as $pay_query_value) {
+                                    echo '<p class="book_date">'.$pay_query_value['from_date'].' to '.$pay_query_value['to_date'].'</p>';
+                                }
+                            }
+
+                            ?>
+                        </div>
+
+
                         <div class="bt-head text-center">
                             <h5>Request to Book</h5>
                             <p>100% refundable · You won’t be charged yet</p>

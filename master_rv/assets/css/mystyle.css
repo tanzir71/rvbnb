@@ -106,9 +106,9 @@
 /*profile styling*/
 .profile_left_bar {
   background: #eee none repeat scroll 0 0;
-  padding: 20px;
-  border-radius: 5px;
   border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 14px 0px 0;
 }
 .profile_img {
   height: 180px;
@@ -398,4 +398,19 @@
   margin-bottom: 3px;
   padding: 12px;
   text-align: center;
+}
+
+.mycaldender td {
+  font-size: 18px;
+  padding: 12px;
+}
+.mycaldender .actives {
+  background: #DD652F none repeat scroll 0 0;
+  color: #fff;
+}
+.bt-head>.book_date {
+  background: #eee none repeat scroll 0 0;
+  border: 1px solid #ddd;
+  margin: 5px 0;
+  padding: 2px;
 }

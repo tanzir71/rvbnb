@@ -25,9 +25,21 @@
 			<li><a href="<?php echo base_url() ?>user/hosting_history"><i class="fa fa-history"></i> Hosting History</a></li>
 		</ul>
 
+		<h4>Booking list</h4>
+		<ul>
+			<li><a href="<?php echo base_url() ?>user/active_booking"><i class="fa fa-product-hunt"></i> Active booking</a></li>
+			<li><a href="<?php echo base_url() ?>user/booking_history"><i class="fa fa-history"></i> Booking history</a></li>
+		</ul>
+
 		<h4>Messaging</h4>
 		<ul>
 			<li><a href="<?php echo base_url() ?>user/chat_list"><i class="fa fa-envelope"></i> Inbox</a></li>
+		</ul>	
+
+		<h4>Transaction</h4>
+		<ul>
+			<li><a href="<?php echo base_url() ?>user/payment"><i class="fa fa-credit-card-alt"></i> Payment</a></li>
+			<li><a href="<?php echo base_url() ?>user/transaction_hostory"><i class="fa fa-history"></i> Transaction History</a></li>
 		</ul>
 <!--
 		<h4>Parking List</h4>
@@ -35,12 +47,6 @@
 			<li><a href="#"><i class="fa fa-product-hunt"></i> Pending Parking</a></li>
 			<li><a href="#"><i class="fa fa-ban"></i> Discard Parking</a></li>
 			<li><a href="#"><i class="fa fa-history"></i> Parking History</a></li>
-		</ul>
-
-		<h4>Transection</h4>
-		<ul>
-			<li><a href="#"><i class="fa fa-credit-card-alt"></i> Payment</a></li>
-			<li><a href="#"><i class="fa fa-history"></i> Transection History</a></li>
 		</ul>
 
 		<h4>Client</h4>

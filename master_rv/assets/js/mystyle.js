@@ -78,7 +78,7 @@ $("#final_search").click(function(){
   var from = $('#from').val().trim();
 
   if (input_data=='' && from=='') {
-    alert('Information Incomplete.');
+    alert('Information incomplete.');
   }else{
 
     $.ajax({
@@ -270,7 +270,7 @@ function password_change(){
     if (new_pass == confirm_pass) {
       $.ajax({
         type: 'POST',
-        url:li+'user/password_change',
+        url:li+'admin/password_change',
         data:{old_pass:old_pass,new_pass:new_pass,confirm_pass:confirm_pass},
         dataType:'json',
         success: function(response){
@@ -360,10 +360,12 @@ function review_submit(){
       dataType:'json',
       success: function(response){
 
-        
-        if (response==2) {
+        if (response==3) {
+          alert('Please remove previous review, then try again.');
+        }
+        else if (response==2) {
           alert('Review did not added!');
-        }else{
+        }else if (response==1){
           location.reload();
         }
 
@@ -505,7 +507,7 @@ function submit_messege(value){
   var details = $("#message_body").val().trim();
 
   if (all_val=='' || details=='') {
-    alert('write something...')
+    alert('Write something...')
   }else{
 
     $.ajax({
@@ -779,4 +781,81 @@ function confirm_chat_with_this_user(value){
         }
     });
 
+}
+
+function edit_hosting(value){
+  var id = $(value).val().trim();
+
+  if (id !== '') {
+    $.ajax({
+      type: 'POST',
+      url:li+'user/edit_hosting',
+      data:{id:id},
+      dataType:'json',
+      success: function(response){
+        if (response == 1) {
+          window.location.href=li+"user/become_a_host_location/";
+        }else{
+          location.reload();
+        }
+        
+      },
+      error: function(){
+        alert('Error editing..');
+      }
+    });
+  }
+}
+
+
+function amount_withdraw(){
+  var amount = $("#amount_withdraw").val().trim();
+  if (amount == '') {
+    alert('Put on amount.');
+  }else{
+      $.ajax({
+          type: 'POST',
+          url:li+'user/amount_withdraw/',
+          data:{amount:amount},
+          dataType:'json',
+          success: function(data){
+
+            if (data == 1) {
+              alert('Withdraw review successful.');
+              location.reload();
+            }else{
+              alert('Withdraw error.');
+            }
+            
+          },
+          error: function(){
+            alert('Error payment!');
+          }
+      });
+
+  }
+
+}
+function remove_review(value){
+  var all_id = $(value).val().trim();
+
+  var del = confirm('Are you sure want to delete review?');
+  if (del == 1) {
+    $.ajax({
+      type: 'POST',
+      url:li+'user/remove_review',
+      data:{all_id:all_id},
+      dataType:'json',
+      success: function(response){
+        if (response == 1) {
+          $('#review'+all_id).fadeOut();
+          alert("Deleted successfully.");
+        }
+        
+      },
+      error: function(){
+        alert('error');
+      }
+    });
+  }
 }

@@ -14,15 +14,29 @@ class Payment extends CI_Controller {
 	}
 	
 	public function process(){
+        $m_id = $this->input->post('m_id');
+        $from_date = $this->input->post('from_date');
+        $to_date = $this->input->post('to_date');
+
+
         $hostid = $this->input->post('hostid');
         $this->db->where('id',$hostid);
         $query = $this->db->get('host');
         $row_amount = $query->row();
-        $amount = $row_amount->amount*100;
+        $db_amount = $row_amount->amount;
 
-        $m_id = $this->input->post('m_id');
-        $from_date = $this->input->post('from_date');
-        $to_date = $this->input->post('to_date');
+        $date1=date_create($from_date);
+        $date2=date_create($to_date);
+        $diff=date_diff($date1,$date2);
+        $total_day = $diff->format("%a");
+
+        $amount = $total_day*$db_amount*100;
+
+
+
+        //$amount = $row_amount->amount*100;
+
+        
 
 
         $card_number = $this->input->post('card_number');
@@ -95,7 +109,8 @@ class Payment extends CI_Controller {
             exit();
         }
 	}
-	public function success(){
-		$this->load->view('stripe/success');
-	}
+
+
+
+    
 }

@@ -46,6 +46,62 @@
 
 		$this->load->view('home/footer');		 
 	}
+	public function change_password(){
+		$this->load->model('setting');
+		 
+		$data['setting']="";
+		$data['type']=0;
+
+		$data['title'] = 'Airrv';
+		
+		$admin = $this->session->userdata('admin');
+		$t = $this->session->userdata('wire');
+		$type = $this->session->userdata('type');			
+			
+		$this->load->view('home/headar',$data);	
+	
+		$data['wire']=$this->setting->getWireList('ware','name','asc',2);
+
+		$data['ware'] = $t;
+		
+		if($type == 1)
+		$this->load->view('home/change_password',$data);
+		else
+			$this->load->view('home/change_password',$data);
+
+		$this->load->view('home/footer');		 
+	}
+	public function password_change(){
+		$old_pass = $this->input->post('old_pass');
+		$new_pass = $this->input->post('new_pass');
+		$confirm_pass = $this->input->post('confirm_pass');
+
+		$id = $this->session->userdata('admin');
+		$this->db->where('id',$id);
+        $query = $this->db->get('password');
+        if ($query->num_rows()>0) {
+        	$data = $query->row();
+        	$password = $data->password;
+
+        	if ($password == $old_pass) {
+        		$change_pass=array(
+	                'password' => $new_pass
+	            );
+	            $this->db->where('id',$id);
+	            $this->db->update('password',$change_pass);
+	            if ($this->db->affected_rows()>0) {
+	            	$msg['success'] = 'Password Change successfully.';
+	            }
+	            else{
+	        		$msg['try_new'] = 'Type new password and try again!';
+	        	}
+        	}else{
+        		$msg['mismatch'] = 'Old Password not matched !';
+        	}
+        }
+        echo json_encode($msg);
+
+	}
 
 	function logout()
     {
@@ -519,6 +575,99 @@
 	    }
 	    
         echo json_encode($result);
+	}
+
+
+	public function payments(){
+		
+		$ware=$this->session->userdata('wire');
+		$type=$this->session->userdata('type');
+		$admin=$this->session->userdata('admin');
+		
+		$this->load->model('setting');
+		
+		$data['type']=0;
+		$data['ware']=$this->setting->getWare('ware','name','asc',1);
+
+
+		$data['title'] = 'Payments || Admin panel';
+		
+		$this->load->view('home/headar',$data);
+
+		$data['alluser']=$this->setting->getAll_data('alluser');
+
+
+		$this->load->view('admin/payments',$data);
+		
+		$this->load->view('home/footer');
+	}
+	public function accounts(){
+		
+		$ware=$this->session->userdata('wire');
+		$type=$this->session->userdata('type');
+		$admin=$this->session->userdata('admin');
+		
+		$this->load->model('setting');
+		
+		$data['type']=0;
+		$data['ware']=$this->setting->getWare('ware','name','asc',1);
+
+
+		$data['title'] = 'Accounts || Admin panel';
+		
+		$this->load->view('home/headar',$data);
+
+		$data['alluser']=$this->setting->getAll_data('alluser');
+
+
+		$this->load->view('admin/accounts',$data);
+		
+		$this->load->view('home/footer');
+	}
+	public function withdraw_request(){
+		
+		$ware=$this->session->userdata('wire');
+		$type=$this->session->userdata('type');
+		$admin=$this->session->userdata('admin');
+		
+		$this->load->model('setting');
+		
+		$data['type']=0;
+		$data['ware']=$this->setting->getWare('ware','name','asc',1);
+
+
+		$data['title'] = 'Withdrw Request || Admin panel';
+		
+		$this->load->view('home/headar',$data);
+
+		$data['alluser']=$this->setting->getAll_data('alluser');
+
+
+		$this->load->view('admin/withdraw_request',$data);
+		
+		$this->load->view('home/footer');
+	}
+
+
+
+	public function payment_withdrw_by_admin(){
+		$values = $this->input->post('values');
+
+		$exp = explode(':', $values);
+		$id = $exp[0];
+		$assign = $exp[1];
+
+		$up_withdraw = array('status' => $assign );
+		$this->db->where('id',$id);
+		$this->db->update('payments',$up_withdraw);
+		if ($this->db->affected_rows()>0) {
+			$msg = 1;
+		}else{
+			$msg = 2;
+		}
+
+		
+		echo json_encode($msg);		
 	}
 
 

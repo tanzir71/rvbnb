@@ -47,7 +47,7 @@
                         <p>Stay in the loop on all upcoming promotions,discounts and latest updates</p>
                         <form class="f-newsletter">
                             <input type="email" placeholder="E-mail address"> </form>
-                        <p class="copy">&copy; 2016 Loocal. All rights reserved 2015.</p>
+                        <p class="copy">&copy; <?php echo date("Y") ?> Loocal. All rights reserved 2017.</p>
                     </div>
                 </div>
             </div>

@@ -103,6 +103,8 @@
                         <i class="fa fa-user fa-fw"></i> <?php echo 'Profile'; ?>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
+                        <li><a href="<?php echo base_url(); ?>admin/change_password"><i class="fa fa-lock"></i> Change password</a>
+                        </li>
                         <li><a href="<?php echo base_url(); ?>admin/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>

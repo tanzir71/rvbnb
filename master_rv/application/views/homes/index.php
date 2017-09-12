@@ -45,7 +45,9 @@
                 </div>
                 <div class="row" id="filterig_result">
 
-                <?php 
+                <?php
+                $today = date("Y-m-d");
+                $this->db->where('to_date >=', $today); //previus date have show
                 $this->db->where('reviews',1);
                 $this->db->where('status',1);
                 $this->db->order_by('id','desc');
@@ -77,7 +79,7 @@
                                     </h4>
                                 </div>
                                 <div class="col-md-2 col-sm-2 col-xs-4 pad0">
-                                    <h4 class="btn btn-default" disable><i class="fa fa-usd" aria-hidden="true"></i><?php echo $value['amount'] ?></h4>
+                                    <h4 class="btn btn-default"><i class="fa fa-usd" aria-hidden="true"></i><?php echo $value['amount'] ?></h4>
                                 </div>
                                 <ul class="list-icon">
                                     <li> <i class="fa fa-map-marker"></i> <?php echo $value['street'] ?></li>

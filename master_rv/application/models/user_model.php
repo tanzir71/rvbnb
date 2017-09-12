@@ -12,9 +12,6 @@ class User_Model extends CI_Model{
 
     public function getPname($table,$col,$id,$name,$col2=null,$id2=null,$col3=null,$id3=null)
     {
-
-        
-        
         $this->db->where($col,$id);
         if(!empty($col2))
             $this->db->where($col2,$id2);
@@ -24,43 +21,27 @@ class User_Model extends CI_Model{
         $info=$this->db->get($table);
         
         foreach($info->result_array() as $val){
-            
-            
             return $val[$name];
             
         }
-        
-        
-        
     }
     public function anyName($table,$col,$id,$name,$col2=null,$id2=null,$col3=null,$id3=null){
         
         
         
         $w = $this->session->userdata('wire');
-        
-        
         if(!empty($col2)){
-            
-                    $this->db->where($col2,$id2);   
-
+            $this->db->where($col2,$id2);
         }
         if(!empty($col3)){
-            
-                    $this->db->where($col3,$id3);   
-
+            $this->db->where($col3,$id3);
         }
         
-    $this->db->where("(ware='".$w."' OR ware='0')");
-
-    
-    
+        $this->db->where("(ware='".$w."' OR ware='0')");
         $this->db->where($col,$id);
         $info=$this->db->get($table);
         foreach($info->result_array() as $val){
-            
             return $val[$name];
-            
         }
     }
 
@@ -81,8 +62,10 @@ class User_Model extends CI_Model{
             $this->db->where('host.from_date <=', $from_date);
         }
 
-         $this->db->where('host.reviews',1);
-         $this->db->where('host.status',1);
+        $this->db->where('host.reviews',1);
+        $this->db->where('host.status',1);
+
+        $this->db->limit(6);
 
         $this->db->group_by('files.hostid', 'desc');
 		$query = $this->db->get("files");
@@ -375,6 +358,9 @@ class User_Model extends CI_Model{
         $query = $this->db->get($table);
         return $query;
     } //admin
+
+
+
 
 
     

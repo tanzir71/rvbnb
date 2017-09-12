@@ -97,16 +97,6 @@
                 </div>
 
 
-            	<div class="panel panel-default">
-				 
-				    <div class="panel-heading">
-                    	<strong><?php echo $user_value['fname']?></strong> parking Information
-                    </div>
-
-                    <div class="panel-body">
-                    	uder construction
-                    </div>
-                </div>
 			<?php } ?>
 			</div>
 	

@@ -4,7 +4,18 @@
 <?php $from_date; ?>
 <?php $m_id; ?>
 <?php $to_date; ?>
+<p>
+	<?php 
+		//$conv_t = strtotime($to_date)-strtotime($from_date);
+		//echo date("Y-m-d", $conv_t)
+		$date1=date_create($from_date);
+		$date2=date_create($to_date);
 
+		$diff=date_diff($date1,$date2);
+		$total_day = $diff->format("%a");
+		//echo $diff->format("%R%a days");
+	?>
+</p>
 <div class="home-directory">
     <div class="container">
         <div class="row">
@@ -99,7 +110,7 @@
 									</div>
 									<h4><?php echo $query_host->title; ?></h4>
 									<ul class="list-group">
-										<li class="list-group-item">Amount: <i class="fa fa-usd"></i><?php echo $query_host->amount; ?></li>
+										<li class="list-group-item">Amount: <i class="fa fa-usd"></i><?php echo $query_host->amount; ?> x <?php echo $total_day; ?> = <i class="fa fa-usd"></i><?php echo $total_amount = $query_host->amount*$total_day; ?></li>
 										<li class="list-group-item">Location: <?php echo $query_host->location; ?></li>
 										<li class="list-group-item">RV Types: Up to <u><?php echo $query_host->rv_sizes; ?></u> feet long.</li>
 										<li class="list-group-item">RV Sizes: <?php echo $query_host->rv_types; ?></li>
@@ -161,7 +172,7 @@
 				success: function(response){
 					console.log(response);
 					if(response.success)
-					window.location.href="<?php echo base_url('payment/success'); ?>";
+					window.location.href="<?php echo base_url('user/payment_overview'); ?>";
 				},
 				error: function(error){
 					console.log(error);

@@ -8,7 +8,7 @@
 		$this->load->library('session');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library("pagination");
-		$this->load->library('facebook');//facebook load
+		$this->load->library('facebook');//facebook load library
 
 
 		$admin_user = $this->session->userdata('airbnb');
@@ -630,26 +630,37 @@
 		$hostid = $this->input->post('hostid');
 		$userid = $this->input->post('userid');
 
-		$this->db->where('id',$hostid);
+
+		$this->db->where('r_id',$r_id);
+		$this->db->where('hostid',$hostid);
 		$this->db->where('userid',$userid);
-		$query = $this->db->get('host');
+		$query = $this->db->get('reviews');
 		if ($query->num_rows()>0) {
-
-			$insert = array(
-				'hostid' => $hostid, 
-				'userid' => $userid, 
-				'r_id' => $r_id, 
-				'star' => $star, 
-				'title' => $title,
-				'comment' => $comments 
-			);
-
-			$this->db->insert('reviews',$insert);
-			if ($this->db->affected_rows()>0) {
-				$msg = 1;
-			}
+			$msg = 3;
 		}else{
-			$msg = 2;
+
+			$this->db->where('id',$hostid);
+			$this->db->where('userid',$userid);
+			$query = $this->db->get('host');
+			if ($query->num_rows()>0) {
+
+				$insert = array(
+					'hostid' => $hostid, 
+					'userid' => $userid, 
+					'r_id' => $r_id, 
+					'star' => $star, 
+					'title' => $title,
+					'comment' => $comments 
+				);
+
+				$this->db->insert('reviews',$insert);
+				if ($this->db->affected_rows()>0) {
+					$msg = 1;
+				}
+			}else{
+				$msg = 2;
+			}
+
 		}
 
 		echo json_encode($msg);
@@ -853,6 +864,115 @@
 		echo json_encode($msg);
 	}
 
+
+	public function edit_hosting(){
+		$id = $this->input->post('id');
+		$userid = $this->session->userdata('airbnb');
+		$session = $this->session->userdata('session');
+
+
+		$update_session = array(
+			'session' => $session,
+			'status' => 0,
+			'reviews' => 0
+		);
+
+		$this->db->where('id',$id);
+		$this->db->where('userid',$userid);
+		$query = $this->db->update('host',$update_session);
+		if ($query) {
+			$msg = 1;
+		}else{
+			$msg = 2;
+		}
+		echo json_encode($msg);
+	} //editing and updating complete.
+
+
+
+
+	public function payment(){
+		$id = $this->session->userdata('airbnb');
+		$data['user_data'] = $this->user_model->user_all_data($id);
+		$data['title'] = 'Payment | On-demand parking for your RV.';
+		$this->load->view('homes/header',$data);
+
+		$this->load->view('user/payment', $data);
+		$this->load->view('homes/footer');
+	}
+
+	public function payment_overview(){
+		$data['title'] = 'Payment | On-demand parking for your RV.';
+		$this->load->view('homes/header',$data);
+
+		$this->load->view('user/payment_overview',$data);
+		$this->load->view('homes/footer');
+	}
+
+
+	public function active_booking(){
+		$id = $this->session->userdata('airbnb');
+		$data['user_data'] = $this->user_model->user_all_data($id);
+		$data['title'] = 'Active Booking | On-demand parking for your RV.';
+		$this->load->view('homes/header',$data);
+
+		$this->load->view('user/active_booking', $data);
+		$this->load->view('homes/footer');
+	}
+
+	public function booking_history(){
+		$id = $this->session->userdata('airbnb');
+		$data['user_data'] = $this->user_model->user_all_data($id);
+		$data['title'] = 'Booking History | On-demand parking for your RV.';
+		$this->load->view('homes/header',$data);
+
+		$this->load->view('user/booking_history', $data);
+		$this->load->view('homes/footer');
+	}
+
+	public function transaction_hostory(){
+		$id = $this->session->userdata('airbnb');
+		$data['user_data'] = $this->user_model->user_all_data($id);
+		$data['title'] = 'Transaction History | On-demand parking for your RV.';
+		$this->load->view('homes/header',$data);
+
+		$this->load->view('user/transaction_hostory', $data);
+		$this->load->view('homes/footer');
+	}
+
+	public function amount_withdraw(){
+		$id = $this->session->userdata('airbnb');
+		$amount = $this->input->post('amount')*100;
+
+
+		$insert_with = array(
+			'm_userid' => $id, 
+			'status' => 4, 
+			'total' => $amount 
+		);
+
+		$this->db->insert('payments',$insert_with);
+		if ($this->db->affected_rows()>0) {
+			$msg= 1;
+		}else{
+			$msg = 2;
+		}
+		echo json_encode($msg);
+
+	}
+	public function remove_review(){
+		$review_id = $this->input->post('all_id');
+
+		$this->db->where('id',$review_id);
+		$this->db->delete('reviews');
+		if ($this->db->affected_rows()>0) {
+			$msg = 1;
+		}else{
+			$msg = 2;
+		}
+		echo json_encode($msg);
+
+	}
 
 	
 

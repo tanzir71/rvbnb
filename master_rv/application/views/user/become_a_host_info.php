@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="form-group col-sm-6 col-xs-12">
-                            <label>Title</label> <span class="required_m">*</span> 
+                            <label>Title</label> <span class="required_m">*</span> <span class="badge">Don't use special character.</span> 
                             <input type="hidden" name="hostid" value="<?php echo $host_data->id; ?>"> 
                             <input class="form-control" name="title" type="text"  value="<?php echo $host_data->title; ?>">
                         </div>

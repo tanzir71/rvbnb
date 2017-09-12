@@ -29,7 +29,9 @@
                                         <th>Added Date</th>
                                         <th>Status</th>
                                         <th>Review</th>
-                                        <th>Delete</th>
+                                        <th>Booking</th>
+                                        <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,11 +66,32 @@
                                                     }
                                                     $sum_show = $sum/$total_review;
                                                     echo '<span class="badge">'.number_format($sum_show, 1).'/Total: '.$get_reviews->num_rows().'</span>';
+                                                }else{
+                                                    echo 'No';
                                                 }
                                                 ?>
                                             </td>
+
+                                            <td>
+                                                <?php
+                                                    $this->db->where('hostid', $value['id']);
+                                                    $this->db->where('payment_status','success');
+                                                    $this->db->where('status','1');
+                                                    $pay_query = $this->db->get('payments');
+                                                    if ($pay_query->num_rows()>0) {
+                                                        foreach ($pay_query->result_array() as $pay_query_value) {
+                                                            echo $pay_query_value['from_date'].' to '.$pay_query_value['to_date'].'<br>';
+                                                        }
+                                                    }
+                                                ?>
+                                            </td>
+
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-sm" value="<?php echo $value['id'];  ?>" onclick="return hosting_delete(this)"><i class="fa fa-trash"></i></button>
+                                            </td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-default btn-sm" value="<?php echo $value['id'];  ?>" onclick="return edit_hosting(this)">Edit</button>
                                             </td>
                                         </tr>
                                     <?php }} ?>

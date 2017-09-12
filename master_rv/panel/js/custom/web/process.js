@@ -304,3 +304,76 @@ function request_inbox(){
     });
   }
 }
+
+
+
+
+function payment_withdrw_by_admin(valu){
+  var values = $(valu).val().trim();
+  var valu = confirm('Are you sure you want to update payment withdraw?');
+    if (valu == 1) {
+
+
+      $.ajax({
+          type: 'POST',
+          url:li+'admin/payment_withdrw_by_admin/',
+          data:{values:values},
+          dataType:'json',
+          success: function(data){
+            if (data==1) {
+              alert('Withdraw request approved!');
+              location.reload();
+            }else{
+              location.reload();
+              alert('Wwithdraw request rejected!');
+            }
+          },
+          error: function(){
+            alert('Error!');
+          }
+      });
+  }
+
+}
+
+function password_change(){
+  var old_pass = $("#old_pass").val().trim();
+  var new_pass = $("#new_pass").val().trim();
+  var confirm_pass = $("#confirm_pass").val().trim();
+
+  if (new_pass !== '' && old_pass !== '' && confirm_pass !== '') {
+    if (new_pass == confirm_pass) {
+      $.ajax({
+        type: 'POST',
+        url:li+'admin/password_change',
+        data:{old_pass:old_pass,new_pass:new_pass,confirm_pass:confirm_pass},
+        dataType:'json',
+        success: function(response){
+
+          $("#old_pass").val('');
+          $("#new_pass").val('');
+          $("#confirm_pass").val('');
+
+          if (response['success']) {
+            $("#show_change_pass").html(response['success']);
+          }else if(response['mismatch']){
+            $("#show_change_pass").html(response['mismatch']);
+          }else{;
+            $("#show_change_pass").html(response['try_new']);
+          }
+
+        },
+        error: function(){
+          alert('error');
+        }
+      });
+    }else{
+      $("#show_change_pass").html('Confirm pass did not match.');
+    }
+    
+  }else{
+    $("#show_change_pass").html('Information incomplete.');
+  }
+
+
+}
